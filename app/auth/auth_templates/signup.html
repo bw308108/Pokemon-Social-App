@@ -1,0 +1,52 @@
+
+{% extends 'base.html' %}
+
+
+{% block content %}
+    <div class="container h-100">
+      <div class="row d-flex justify-content-left align-items-center h-100">
+        <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+          <div class="card" style="border-radius: 15px;">
+            <div class="card-body p-5">
+              <h2 class="text-uppercase text-center mb-5">Create an account</h2>
+              <form method="POST">
+              
+                {{user.hidden_tag()}}
+
+                <div class="form-outline mb-4">
+                  {{user.firstname(class="form-control form-control-lg",placeholder="Firstname")}}
+                </div>
+
+                <div class="form-outline mb-4">
+                  {{user.lastname(class="form-control form-control-lg",placeholder="Lastname")}}
+                </div>
+
+                <div class="form-outline mb-4">
+                  {{user.email(class="form-control form-control-lg", placeholder="Email")}}
+                </div>
+
+                <div class="form-outline mb-4">
+                  {{user.password(class="form-control form-control-lg", placeholder="Password")}}
+                </div>
+
+                <div class="form-outline mb-4">
+                  {{user.confirm_password(class="form-control form-control-lg", placeholder="Repeat Your Password")}}
+                </div>
+
+                <div class="d-flex justify-content-center">
+                  {{user.submit(class="btn btn-success btn-block btn-lg gradient-custom-4 text-body")}}
+                </div>
+
+                <p class="text-center text-muted mt-5 mb-0">Have already an account? <a href="/login"
+                    class="fw-bold text-body"><u>Login here</u></a></p>
+
+              </form>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+    {% block content %}
+<h1>Pokemon Profile</h1>
+<form method="POST">
+  {{form.hidden_tag()}}
+    {{form.name(placeholder="Pokemon Name")}}
+    {{form.submit}} 
+    <img src="{{poke_profile['image']}}" alt="">
+    <p>Name: "{{poke_profile['name']}}" </p>
+    <p>Base Experience: "{{poke_profile['base_experience']}}" </p>
+    <p>Abilities: "{{poke_profile['abilities']}}" </p>
+    <p>HP Base Stat: "{{poke_profile['hp_base_stat']}}" </p>
+    <p>Attack Base Stat: "{{poke_profile['attack_base_stat']}}" </p>
+    <p>Defense Base Stat: "{{poke_profile['hp_base_stat']}}" </p>
+  </form>
+
+
+
+    {% endblock %}
