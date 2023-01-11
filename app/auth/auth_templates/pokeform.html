@@ -5,13 +5,22 @@
   {{form.hidden_tag()}}
     {{form.name(placeholder="Pokemon Name")}}
     {{form.submit}} 
-    <img src="{{poke_profile['image']}}" alt="">
-    <p>Name: "{{poke_profile['name']}}" </p>
-    <p>Base Experience: "{{poke_profile['base_experience']}}" </p>
-    <p>Abilities: "{{poke_profile['abilities']}}" </p>
-    <p>HP Base Stat: "{{poke_profile['hp_base_stat']}}" </p>
-    <p>Attack Base Stat: "{{poke_profile['attack_base_stat']}}" </p>
-    <p>Defense Base Stat: "{{poke_profile['hp_base_stat']}}" </p>
+    <div class="card mx-auto" style="width: 20rem;">
+      <img class="card-img-top" src="{{poke_profile['image']}}" alt="">
+      <div class="card-body">
+        <h5 class="Card Title">Pokemon Card</h5>
+        <p class="card-text">Name: {{poke_profile['name']}} </p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Base Experience: {{poke_profile['base_experience']}} </li>
+        <li class="list-group-item">Abilities: {{poke_profile['abilities']}} </li>
+        <li class="list-group-item">HP Base Stat: {{poke_profile['hp_base_stat']}}</li>
+        <li class="list-group-item">Attack Base Stat:{{poke_profile['attack_base_stat']}}</li>
+        <li class="list-group-item">Defense Base Stat: {{poke_profile['hp_base_stat']}}</li>
+      </ul>
+      <div class="card-body">
+      </div>
+    </div>
   </form>
 
 

@@ -8,22 +8,22 @@
             <h2 class="text-uppercase text-center mb-5">Login</h2>
             <form method="POST">
             
-              {{user.hidden_tag()}}
+              {{form.hidden_tag()}}
 
               <div class="form-outline mb-4">
-                {{user.email(class="form-control form-control-lg", placeholder="Email")}}
+                {{form.email(class="form-control form-control-lg", placeholder="Email")}}
               </div>
 
               <div class="form-outline mb-4">
-                {{user.password(class="form-control form-control-lg", placeholder="Password")}}
+                {{form.password(class="form-control form-control-lg", placeholder="Password")}}
               </div>
 
               <div class="form-outline mb-4">
-                {{user.confirm_password(class="form-control form-control-lg", placeholder="Repeat Your Password")}}
+                {{form.confirm_password(class="form-control form-control-lg", placeholder="Repeat Your Password")}}
               </div>
 
               <div class="d-flex justify-content-center">
-                {{user.submit(class="btn btn-success btn-block btn-lg gradient-custom-4 text-body")}}
+                {{form.submit(class="btn btn-success btn-block btn-lg gradient-custom-4 text-body")}}
               </div>
 
             </form>

@@ -1,19 +1,22 @@
-from flask import Blueprint, redirect, render_template, request
+from flask import Blueprint, redirect, render_template, request, url_for
 
 from app.auth.forms import Pokeform, Usercreationform
+from app.models import User
 
 import requests
+
+
 
 auth = Blueprint('auth',__name__, template_folder='auth_templates')
 
 @auth.route('/login')
 def login():
-     user = Usercreationform()
+     form = Usercreationform()
      if request.method == 'POST':
-        if user.validate():
-            email = user.email.data
-            password = user.password.data
-     return render_template('login.html', user=user)
+        if form.validate():
+            email = form.email.data
+            password = form.password.data
+     return render_template('login.html', form=form)
 
 
 @auth.route('/pokeform', methods=['GET', 'POST'])
@@ -43,12 +46,20 @@ def pokeform():
 
 @auth.route('/signup', methods=['GET','POST'])
 def signup():
-    user = Usercreationform()
+    forms = Usercreationform()
     if request.method == 'POST':
-        if user.validate():
-            firstname = user.firstname.data
-            lastname = user.lastname.data
-            email = user.email.data
-            password = user.password.data
-        print(firstname, lastname, email, password)
-    return render_template('signup.html', user=user)
+        if forms.validate():
+            firstname = forms.firstname.data
+            lastname = forms.lastname.data
+            email = forms.email.data
+            password = forms.password.data
+
+            print(firstname, lastname, email, password)
+
+            user = User(firstname, lastname, email, password)
+
+
+            user.save_to_db()
+            return redirect(url_for('auth.login'))
+
+    return render_template('signup.html', forms=forms)
