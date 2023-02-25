@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+    {% block content %}
+<h1>Pokemon Profile</h1>
+<form method="POST">
+  {{form.hidden_tag()}}
+    {{form.name(placeholder="Pokemon Name")}}
+    {{form.submit}} 
+    <div class="card mx-auto" style="width: 15rem;">
+      <img class="card-img-top" src="{{poke_profile['image']}}" alt="">
+      <div class="card-body">
+        <h5 class="Card Title">Pokemon Card</h5>
+        <p class="card-text">Name: {{poke_profile['name']}} </p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Base Experience: {{poke_profile['base_experience']}} </li>
+        <li class="list-group-item">Abilities: {{poke_profile['abilities']}} </li>
+        <li class="list-group-item">HP Base Stat: {{poke_profile['hp_base_stat']}}</li>
+        <li class="list-group-item">Attack Base Stat:{{poke_profile['attack_base_stat']}}</li>
+        <li class="list-group-item">Defense Base Stat: {{poke_profile['hp_base_stat']}}</li>
+        <a class="btn btn-success mx-auto mb-2" style="width: 12rem;" href="">Catch </a>
+      </ul>
+      <div class="card-body">
+      </div>
+    </div>
+  </form>
+    {% endblock %}

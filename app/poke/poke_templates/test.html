@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block content  %}
+ {% for post in posts %} <!--passed in from routes page; want to access each object in database -->
+<a class="card mx-auto m-3 text-decoration-none"  href="">
+  
+    <div class="card-body">
+    {{a}}
+    </div>
+  </a>
+{% endfor %}
+{% endblock  %}
