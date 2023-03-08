@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, SubmitField
+from wtforms import StringField, SubmitField, SearchField
 from wtforms.validators import DataRequired
 
 class PostForm(FlaskForm):
@@ -11,3 +11,4 @@ class PostForm(FlaskForm):
 class PokeForm(FlaskForm):
     name = StringField('Title', validators=[DataRequired()])
     submit = SubmitField()
+    add = SubmitField()

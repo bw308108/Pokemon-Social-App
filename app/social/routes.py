@@ -1,7 +1,7 @@
 from flask import Blueprint, redirect, render_template, request, url_for, flash
 from flask_login import current_user, login_required
 from .forms import PostForm, PokeForm
-from app.models import Post
+from app.models import Post, Catch
 import requests
 
 social = Blueprint('social', __name__, template_folder='social_templates')
@@ -31,7 +31,7 @@ def view_posts():
     return render_template('feed.html', posts=posts[::-1])
 
 @social.route('/posts/forms', methods=['GET', 'POST'])
-def poke_forms():
+def pokemon():
     form = PokeForm()
     poke_profile = {}
     if request.method == 'POST':
@@ -41,6 +41,7 @@ def poke_forms():
             if response.status_code != 200:
                 print(f'{pokemon_name} is not a valid pokemon name. Please double check your spelling.')
             else:
+                print('it worked')
                 data = response.json()
                 poke_profile = {
                     "name":data['name'],
@@ -51,9 +52,24 @@ def poke_forms():
                     "hp_base_stat" :data['stats'][0]['base_stat'],
                     "defense_base_stat": data['stats'][2]['base_stat']
                 }
-            print(poke_profile)
-            print(poke_profile['image'])
-    return render_template('pokeform.html', form=form, poke_profile=poke_profile)
+
+
+
+                # name = poke_profile['name'] #assigning stats to a variable
+                # base_experience = poke_profile['base_experience']
+                # abilities = poke_profile['abilities']
+                # image = poke_profile['image']
+                # base_stat = poke_profile['hp_base_stat']
+                # attack_base = poke_profile['attack_base_stat']
+                # defense_base = poke_profile['defense_base_stat']
+       
+
+
+            # catch = Catch(name, base_experience, abilities, image, base_stat, attack_base, defense_base, current_user.id)
+            # catch.save_to_db() 
+            # print('{pokemon_name} added to db')
+
+    return render_template('pokeform.html', poke_profile=poke_profile, form=form)
 
 
 @social.route('/posts/<int:post_id>')
@@ -63,6 +79,13 @@ def view_single_post(post_id):
         return render_template('single_post.html', post=post)
     else:
         return redirect(url_for('social.view_posts'))
+
+
+@social.route('/posts/test')
+def pokedex():
+    pokemon_name = ''
+    ball = poke(pokemon_name)
+    return render_template('test.html', ball=ball)
 
 @social.route('/posts/update/<int:post_id>', methods=['GET', 'POST'])
 def update_post(post_id):

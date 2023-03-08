@@ -8,12 +8,12 @@
             <h2 class="text-uppercase text-center mb-5">Login</h2>
             <form method="POST">
             
-              {{form.hidden_tag()}}
+              {{form.hidden_tag()}} <!--another securitey check that have the token to acces the website-->
 
               <div class="form-outline mb-4">
                 {{form.email(class="form-control form-control-lg", placeholder="Email")}}
-              </div>
-
+              </div> <!-- how to use bootstrap styling classes-->
+                      <!--between each attribute you have to have a common-->
               <div class="form-outline mb-4">
                 {{form.password(class="form-control form-control-lg", placeholder="Password")}}
               </div>

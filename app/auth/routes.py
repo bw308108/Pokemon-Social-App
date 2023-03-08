@@ -1,7 +1,7 @@
 from flask import Blueprint, redirect, render_template, request, url_for
 from flask_login import login_user, logout_user, current_user
 from app.auth.forms import Pokeform, Usercreationform, LoginForm
-from app.models import User
+from app.models import User 
 from werkzeug.security import check_password_hash
 
 import requests
@@ -35,22 +35,23 @@ def logout():
     return redirect(url_for('auth.login'))
 
 
-@auth.route('/signup', methods=['GET','POST'])
+@auth.route('/signup', methods=['GET','POST']) #can now accept post request
 def signup():
-    forms = Usercreationform()
-    if request.method == 'POST':
-        if forms.validate():
-            firstname = forms.firstname.data
+    forms = Usercreationform() #need to instantiate the Usercretaionform because it is a class
+    if request.method == 'POST': #if the specific meothod is a post request on this specific route
+        if forms.validate(): #validators, from forms.py
+            firstname = forms.firstname.data #firstname is equal to the form (or forms) that we are getting back from the post request 
             lastname = forms.lastname.data
             email = forms.email.data
             password = forms.password.data
 
             print(firstname, lastname, email, password)
 
-            user = User(firstname, lastname, email, password)
-
+            user = User(firstname, lastname, email, password) #created in instance of User class from models page
+            #this is where we are going to pass in the user name that we are getting from our user; see above variables
 
             user.save_to_db()
             return redirect(url_for('auth.login'))
 
-    return render_template('signup.html', forms=forms)
+    return render_template('signup.html', forms=forms) #passed in the instance from form to the signup page
+    #now we should be able to utilize the attributes that we built from the Usercreationform on Forms.py

@@ -6,7 +6,7 @@ import requests
 poke = Blueprint('poke',__name__, template_folder='poke_templates')
 
 
-@poke.route('/forms', methods=['GET', 'POST'])
+@poke.route('/forms2', methods=['GET', 'POST'])
 @login_required
 def poke_forms():
     form = PokeForm()
@@ -30,4 +30,4 @@ def poke_forms():
                 }
             print(poke_profile)
             print(poke_profile['image'])
-    return render_template('pokeform.html', form=form, poke_profile=poke_profile)
+    return render_template('pokeform2.html', form=form, poke_profile=poke_profile)
